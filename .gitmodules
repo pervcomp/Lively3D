@@ -1,3 +1,12 @@
 [submodule "externals/GLGE"]
 	path = externals/GLGE
 	url = git@github.com:Zharktas/GLGE.git
+[submodule "externals/uglifyjs"]
+	path = externals/uglifyjs
+	url = https://github.com/mishoo/UglifyJS
+[submodule "jsdoc-toolkit"]
+	path = jsdoc-toolkit
+	url = https://github.com/p120ph37/node-jsdoc-toolkit
+[submodule "externals/jsdoc-toolkit"]
+	path = externals/jsdoc-toolkit
+	url = https://github.com/p120ph37/node-jsdoc-toolkit
