@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html manifest="cache.manifest">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link rel="stylesheet" type="text/css" href="lively3d.css" />
+		<script type="text/javascript" src="scripts/Stats.js"></script> 
+		<script type="text/javascript" src="scripts/modernizr-2.0.js"></script> 
+		<script type="text/javascript" src="scripts/webgl-utils.js"></script> 
+		<script type="text/javascript" src="scripts/glge-compiled-min.js"></script>
+		<script type="text/javascript" src="scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="scripts/lively3d-compiled-min.js"></script>
+
+		<script type="text/javascript">
+			
+			//Lively3D = new Lively3D();
+			
+			$(document).ready(function(){
+					
+				var stats = new Stats();
+
+				// Align top-right
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.right = '0px';
+				stats.domElement.style.bottom = '0px';
+
+				document.body.appendChild( stats.domElement );
+
+				setInterval( function () {
+					stats.update();
+				}, 1000 / 60 );
+				
+				if ( Modernizr.webgl ){
+					Lively3D.Init("canvas");
+				}
+				else{
+					var body = $("#container");
+					body.css("visibility", "hidden");
+					var msg = 'With a different browser you’ll get to see the WebGL experience here: \
+						get.webgl.org.';
+					var div=document.createElement("div");
+					div.id = "notice"; 
+					document.body.appendChild(div);
+					document.getElementById( 'notice' ).innerHTML = msg;
+				}
+				
+				window.addEventListener('offline', Lively3D.UI.UseLocal);
+				window.addEventListener('online', Lively3D.UI.UseOnline);
+				
+				if ( !navigator.onLine ){
+					Lively3D.UI.UseLocal();
+				}
+			});
+		
+		</script>
+		
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27729294-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+	</head>
+	<body>
+		<div id="container">
+			<canvas id="canvas" width="960" height="600"></canvas>
+			<div id='ui' class="ui">
+				<button onclick="Lively3D.UI.ShowAppList()">Load Application</button>
+				<button onclick="Lively3D.UI.ShowSaveDialog()">Save Desktop</button>
+				<button onclick="Lively3D.UI.ShowStateList()">Load Desktop</button>
+				<button onclick="Lively3D.UI.ShowSceneList()">Load Scene</button>
+				<button onclick="Lively3D.UI.ChangeScene()">Switch Scene</button>
+				<input type="checkbox" name="UseNode" value="Node" onchange="Lively3D.UI.ToggleNode()"/> Use Node.js
+				<button onclick="Lively3D.UI.ShowAbout()" style="position: absolute; bottom: 0px; left: 0px">About</button>
+				<button onclick="Lively3D.Sync()">Sync for local usage</button>
+			</div>
+		</div>
+		<a href="https://github.com/Zharktas/Lively3D"><img style="position: absolute; top: 0; right: 0; border: 0; width: 10%;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+	</body>
+</html>

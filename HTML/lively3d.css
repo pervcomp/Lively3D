@@ -1,0 +1,63 @@
+body{
+	background-color: #000;
+	color: #fff;
+	font-family:arial;
+	margin: 0;
+	height: 100%;
+	overflow-y: hidden;
+}
+
+html{
+	height: 100%;
+}
+
+
+#container,#canvas{
+	width: 100%;
+	height: 100%;
+}
+
+.ui{
+	width: 100px;
+	height: 100%;
+	float: left;
+	position: absolute;
+	top: 0px;
+	background: green;
+	opacity: 0.2;
+	font-size: 14px;
+}
+
+.ui button{
+	width: 100px;
+	
+}
+
+#appSelection, #stateSave, #stateLoad, #sceneSelection, .dialog{
+	width: 70%;
+	height: 70%;
+	opacity: 0.5;
+	background: black;
+	text-align: center;
+	float: left;
+	position: absolute;
+	top: 15%;
+	left: 15%;
+	display: none;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+#loadcompleted{
+	width: 100px;
+	height: 90px;
+	opacity: 0.5;
+	background: black;
+	text-align: center;
+	float: left;
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	display: none;
+	border-radius: 15px;
+}
