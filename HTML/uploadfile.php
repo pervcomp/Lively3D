@@ -64,16 +64,16 @@ fwrite($file, $_POST["file"]);
 fclose($file);
 chmod($target_path . $path . '/' . $filename, 0666);
 
-$consumerKey = '554btkq7wakz1v1';
-$consumerSecret = '51pc64m067uw7xf';
+$consumerKey = 'your consumer key';
+$consumerSecret = 'your consumer secret';
 
 
 require_once 'dropbox.php';
 
 $dropbox = new Dropbox($consumerKey, $consumerSecret);
 
-$token = "fjoxipsfsm6m0ij";
-$tokenSecret = "r9we3c3a18gnrh3";
+$token = "your token";
+$tokenSecret = "your token secret";
 
 $dropbox->setOAuthToken($token);
 $dropbox->setOAuthTokenSecret($tokenSecret);
