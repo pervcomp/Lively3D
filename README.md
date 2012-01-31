@@ -7,4 +7,4 @@ The features of Lively3D include canvas-application embedding, redefinement of 3
 
 ### Canvas-Applications
 
-Lively3D provides interfaces for embedding existing canvas-rendered applications to the environment. Required functions are presented in [Application Template] (https://github.com/Zharktas/Lively3D/templates/ApplicationTemplate.js).
+Lively3D provides interfaces for embedding existing canvas-rendered applications to the environment. Required functions are presented in [Application Template] (https://github.com/Zharktas/Lively3D/blob/master/templates/ApplicationTemplate.js).
