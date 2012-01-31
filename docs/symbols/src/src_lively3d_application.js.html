@@ -279,42 +279,57 @@
 <span class='line'>272</span> </span><span class="WHIT">			</span><span class="NAME">ApplicationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">code</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>273</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>274</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>275</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>276</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">InitializationCode</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>277</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>278</span> 			Sets application's initalization code.
-<span class='line'>279</span> 			@param {function} code Initalization code.
-<span class='line'>280</span> 		*/</span><span class="WHIT">
-<span class='line'>281</span> </span><span class="WHIT">		</span><span class="NAME">this.SetInitializationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>282</span> </span><span class="WHIT">			</span><span class="NAME">InitializationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">code</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>283</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>284</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>285</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>286</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>287</span> 			Sets Save function for state creation.
-<span class='line'>288</span> 			@param {function} func Function to be called during state save.
-<span class='line'>289</span> 		*/</span><span class="WHIT">
-<span class='line'>290</span> </span><span class="WHIT">		</span><span class="NAME">this.SetSave</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>291</span> </span><span class="WHIT">			</span><span class="NAME">this.Save</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>292</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>293</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>294</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>295</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>296</span> 			Sets Load function for state parsing.
-<span class='line'>297</span> 			@param {function} func Function to be called during state load.
-<span class='line'>298</span> 		*/</span><span class="WHIT">
-<span class='line'>299</span> </span><span class="WHIT">		</span><span class="NAME">this.SetLoad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>300</span> </span><span class="WHIT">			</span><span class="NAME">this.Load</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>301</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>302</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>303</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>304</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>305</span> 			Set the function which is executed after the application is initialized.
-<span class='line'>306</span> 			@param {function} func Function for execution.
-<span class='line'>307</span> 		*/</span><span class="WHIT">
-<span class='line'>308</span> </span><span class="WHIT">		</span><span class="NAME">this.SetStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>309</span> </span><span class="WHIT">			</span><span class="NAME">this.StartApp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>310</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>311</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>312</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>313</span> </span><span class="PUNC">}</span><span class="PUNC">(</span><span class="NAME">Lively3D</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<span class='line'>275</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>276</span> 			Gets application code.
+<span class='line'>277</span> 			@return application code.
+<span class='line'>278</span> 		*/</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">		</span><span class="NAME">this.GetApplicationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ApplicationCode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">InitializationCode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>285</span> 			Sets application's initalization code.
+<span class='line'>286</span> 			@param {function} code Initalization code.
+<span class='line'>287</span> 		*/</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">		</span><span class="NAME">this.SetInitializationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">			</span><span class="NAME">InitializationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">code</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>294</span> 			Gets InitializationCode code.
+<span class='line'>295</span> 			@return InitializationCode code.
+<span class='line'>296</span> 		*/</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">		</span><span class="NAME">this.GetInitializationCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">InitializationCode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>302</span> 			Sets Save function for state creation.
+<span class='line'>303</span> 			@param {function} func Function to be called during state save.
+<span class='line'>304</span> 		*/</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">		</span><span class="NAME">this.SetSave</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">			</span><span class="NAME">this.Save</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>311</span> 			Sets Load function for state parsing.
+<span class='line'>312</span> 			@param {function} func Function to be called during state load.
+<span class='line'>313</span> 		*/</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">		</span><span class="NAME">this.SetLoad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">			</span><span class="NAME">this.Load</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>320</span> 			Set the function which is executed after the application is initialized.
+<span class='line'>321</span> 			@param {function} func Function for execution.
+<span class='line'>322</span> 		*/</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">		</span><span class="NAME">this.SetStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">			</span><span class="NAME">this.StartApp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="PUNC">}</span><span class="PUNC">(</span><span class="NAME">Lively3D</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

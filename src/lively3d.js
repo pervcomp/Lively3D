@@ -472,7 +472,33 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetCurrentSceneIndex = function(){
 		return CurrentScene;
 	}
-	
+	/**
+		Switches to the next scene. If current scene is the last scene, switches to the first scene.
+	*/
+	Lively3D.ChangeScene = function(){
+		
+		for ( var i in Applications){
+			if ( Applications.hasOwnProperty(i)){
+				if ( !Applications[i].isClosed() ){
+					Lively3D.Close(Applications[i]);
+				}
+			}
+		}
+		
+		CurrentScene += 1;
+		if (CurrentScene == Scenes.length ){
+			CurrentScene = 0;
+		}
+		
+		for ( var i in Applications){
+			Applications[i].SetCurrentSceneObject(CurrentScene);
+		}
+				
+		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
+		DefaultCanvasEvents(document.getElementById(canvasName));
+		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
+		
+	}
 
 	/**
 		@namespace Functions for proxying files through serverside PHP.
@@ -803,13 +829,28 @@ var Lively3D = (function(Lively3D){
 	
 	/**
 		Gets GLGE MouseInput object.
-		@return MouseInput Object.
+		@returns MouseInput Object.
 	*/
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
 	
+	var username;
 	
+	/**
+		Gets User name.
+		@returns Username.
+	*/
+	Lively3D.GetUsername = function(){
+		return username;
+	}
+	
+	/**
+		Sets User name.
+	*/
+	Lively3D.SetUsername = function(name){
+		username = name;
+	}
 	
 	/**
 		Shows notification about completion of downloading Application or 3D Scene. 

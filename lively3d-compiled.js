@@ -472,7 +472,33 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetCurrentSceneIndex = function(){
 		return CurrentScene;
 	}
-	
+	/**
+		Switches to the next scene. If current scene is the last scene, switches to the first scene.
+	*/
+	Lively3D.ChangeScene = function(){
+		
+		for ( var i in Applications){
+			if ( Applications.hasOwnProperty(i)){
+				if ( !Applications[i].isClosed() ){
+					Lively3D.Close(Applications[i]);
+				}
+			}
+		}
+		
+		CurrentScene += 1;
+		if (CurrentScene == Scenes.length ){
+			CurrentScene = 0;
+		}
+		
+		for ( var i in Applications){
+			Applications[i].SetCurrentSceneObject(CurrentScene);
+		}
+				
+		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
+		DefaultCanvasEvents(document.getElementById(canvasName));
+		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
+		
+	}
 
 	/**
 		@namespace Functions for proxying files through serverside PHP.
@@ -803,13 +829,28 @@ var Lively3D = (function(Lively3D){
 	
 	/**
 		Gets GLGE MouseInput object.
-		@return MouseInput Object.
+		@returns MouseInput Object.
 	*/
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
 	
+	var username;
 	
+	/**
+		Gets User name.
+		@returns Username.
+	*/
+	Lively3D.GetUsername = function(){
+		return username;
+	}
+	
+	/**
+		Sets User name.
+	*/
+	Lively3D.SetUsername = function(name){
+		username = name;
+	}
 	
 	/**
 		Shows notification about completion of downloading Application or 3D Scene. 
@@ -1124,6 +1165,13 @@ var Lively3D = (function(Lively3D){
 			ApplicationCode = code;
 			return this;
 		}
+		/**
+			Gets application code.
+			@return application code.
+		*/
+		this.GetApplicationCode = function(){
+			return ApplicationCode;
+		}
 		
 		var InitializationCode;
 		/**
@@ -1133,6 +1181,14 @@ var Lively3D = (function(Lively3D){
 		this.SetInitializationCode = function(code){
 			InitializationCode = code;
 			return this;
+		}
+		
+		/**
+			Gets InitializationCode code.
+			@return InitializationCode code.
+		*/
+		this.GetInitializationCode = function(){
+			return InitializationCode;
 		}
 		
 		/**
@@ -1364,33 +1420,7 @@ var Lively3D = (function(Lively3D){
 		}
 	};
 	
-	/**
-		Switches to the next scene. If current scene is the last scene, switches to the first scene.
-	*/
-	Lively3D.UI.ChangeScene = function(){
-		
-		for ( var i in Applications){
-			if ( Applications.hasOwnProperty(i)){
-				if ( !Applications[i].isClosed() ){
-					Lively3D.Close(Applications[i]);
-				}
-			}
-		}
-		
-		CurrentScene += 1;
-		if (CurrentScene == Scenes.length ){
-			CurrentScene = 0;
-		}
-		
-		for ( var i in Applications){
-			Applications[i].SetCurrentSceneObject(CurrentScene);
-		}
-				
-		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
-		DefaultCanvasEvents(document.getElementById(canvasName));
-		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
-		
-	}
+	
 	
 	var tmpApp;
 	/**
@@ -1492,14 +1522,14 @@ var Lively3D = (function(Lively3D){
 		});
 	}
 	
-	var username;
+	
 	/**
 		Saves username from the original dialog.
 	*/
 	Lively3D.UI.EnterUsername = function(){
 		var name = $("#username");
 		if ( name[0].value.length != 0 ){
-			username = name[0].value;
+			Lively3D.SetUsername(name[0].value);
 			this.CloseDialog();
 		}
 		else{
@@ -1557,6 +1587,7 @@ var Lively3D = (function(Lively3D){
 		
 			var LivelyState = '';
 			var state = [];
+			var Applications = Lively3D.GetApplications();
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
 					var app = Applications[i];
@@ -1565,13 +1596,13 @@ var Lively3D = (function(Lively3D){
 						Lively3D.Minimize(app);
 					}
 					var AppJSON = {
-						Name: app.name,
-						Location: { x: app.current.getLocX(), y: app.current.getLocY(), z: app.current.getLocZ()},
-						Rotation: app.current.getRotation(),
+						Name: app.GetName(),
+						Location: { x: app.GetCurrentSceneObject().getLocX(), y: app.GetCurrentSceneObject().getLocY(), z: app.GetCurrentSceneObject().getLocZ()},
+						Rotation: app.GetCurrentSceneObject().getRotation(),
 						Closed: app.isClosed(),
 						Maximized: maximized,
-						Code: app.AppCode.toString(),
-						Init: app.AppInit.toString(),
+						Code: app.GetApplicationCode().toString(),
+						Init: app.GetInitializationCode().toString(),
 						AppState: app.Save()
 					}
 					
@@ -1582,7 +1613,7 @@ var Lively3D = (function(Lively3D){
 				}
 			}
 			LivelyState = JSON.stringify(state);
-			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + username);
+			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + Lively3D.GetUsername());
 		},
 		
 		/**
@@ -1591,7 +1622,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		LoadDesktop: function(filename){
 			
-			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + username + '/');
+			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + Lively3D.GetUsername() + '/');
 		},
 		
 		/**
@@ -1599,7 +1630,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		ShowStateList: function(){
 			
-			$.get("getFileList.php", {path: 'states/' + username}, function(list){
+			$.get("getFileList.php", {path: 'states/' + Lively3D.GetUsername()}, function(list){
 				var files = JSON.parse(list);
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();
@@ -1673,15 +1704,15 @@ var Lively3D = (function(Lively3D){
 	};
 	
 	var SetAppLocation = function(App, location){
-		App.current.setLocX(location.x);
-		App.current.setLocY(location.y);
-		App.current.setLocZ(location.z);
+		App.GetCurrentSceneObject().setLocX(location.x);
+		App.GetCurrentSceneObject().setLocY(location.y);
+		App.GetCurrentSceneObject().setLocZ(location.z);
 	};
 	
 	var SetAppRotation = function(App, rotation){
-		App.current.setRotX(rotation.x);
-		App.current.setRotY(rotation.y);
-		App.current.setRotZ(rotation.z);
+		App.GetCurrentSceneObject().setRotX(rotation.x);
+		App.GetCurrentSceneObject().setRotY(rotation.y);
+		App.GetCurrentSceneObject().setRotZ(rotation.z);
 	};
 	
 	
@@ -1731,7 +1762,7 @@ var Lively3D = (function(Lively3D){
 			
 			var state = {};
 			state.name = name;
-			state.user = username;
+			state.user = Lively3D.GetUsername();
 			state.applications = [];
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
@@ -1781,7 +1812,7 @@ var Lively3D = (function(Lively3D){
 				Applications.splice(0, 1);
 			}
 			
-			$.get("/lively3d/node/states/" + username + '/' + name, function (data){
+			$.get("/lively3d/node/states/" + Lively3D.GetUsername() + '/' + name, function (data){
 				var apps = data.applications;
 				for ( var i in apps){
 					if ( apps.hasOwnProperty(i)){
@@ -1814,7 +1845,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		ShowStateList: function(){
 			
-			$.get("/lively3d/node/states/" + username, function(files){
+			$.get("/lively3d/node/states/" + Lively3D.GetUsername(), function(files){
 				
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();

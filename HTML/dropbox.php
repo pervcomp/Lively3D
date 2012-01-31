@@ -759,7 +759,7 @@ class Dropbox
 	public function oAuthRequestToken()
 	{
 		// make the call
-		$response = $this->doOAuthCall('0/oauth/request_token', null, 'POST', false);
+		$response = $this->doOAuthCall('1/oauth/request_token', null, 'POST', false);
 
 		// process response
 		$response = (array) explode('&', $response);
@@ -800,7 +800,7 @@ class Dropbox
 		if($oauthCallback !== null) $parameters['oauth_callback'] = (string) $oauthCallback;
 
 		// build url
-		$url = self::API_AUTH_URL . '/0/oauth/authorize?' . http_build_query($parameters);
+		$url = self::API_AUTH_URL . '/1/oauth/authorize?' . http_build_query($parameters);
 
 		// redirect
 		header('Location: ' . $url);
@@ -822,7 +822,7 @@ class Dropbox
 		$parameters['oauth_token'] = (string) $oauthToken;
 
 		// make the call
-		$response = $this->doOAuthCall('0/oauth/access_token', $parameters, 'POST', false);
+		$response = $this->doOAuthCall('1/oauth/access_token', $parameters, 'POST', false);
 
 		// process response
 		$response = (array) explode('&', $response);
@@ -867,7 +867,7 @@ class Dropbox
 		$parameters['password'] = (string) $password;
 
 		// make the call
-		$response = (array) $this->doOAuthCall('0/token', $parameters);
+		$response = (array) $this->doOAuthCall('1/token', $parameters);
 
 		// validate and set
 		if(isset($response['token'])) $this->setOAuthToken($response['token']);
@@ -897,7 +897,7 @@ class Dropbox
 		$parameters['last_name'] = (string) $lastName;
 		$parameters['password'] = (string) $password;
 
-		return (bool) ($this->doCall('0/account', $parameters, 'POST', null, false) == 'OK');
+		return (bool) ($this->doCall('1/account', $parameters, 'POST', null, false) == 'OK');
 	}
 
 
@@ -909,7 +909,7 @@ class Dropbox
 	public function accountInfo()
 	{
 		// make the call
-		return (array) $this->doCall('0/account/info');
+		return (array) $this->doCall('1/account/info');
 	}
 
 
@@ -924,7 +924,7 @@ class Dropbox
 	public function filesGet($path, $sandbox = false)
 	{
 		// build url
-		$url = '0/files/';
+		$url = '1/files/';
 		$url .= ($sandbox) ? 'sandbox/' : 'dropbox/';
 		$url .= trim((string) $path, '/');
 
@@ -944,7 +944,7 @@ class Dropbox
 	public function filesPost($path, $localFile, $sandbox = false)
 	{
 		// build url
-		$url = '0/files/';
+		$url = '1/files/';
 		$url .= ($sandbox) ? 'sandbox/' : 'dropbox/';
 		$url .= trim((string) $path, '/');
 
@@ -971,7 +971,7 @@ class Dropbox
 	public function metadata($path = '', $fileLimit = 10000, $hash = false, $list = true, $sandbox = false)
 	{
 		// build url
-		$url = '0/metadata/';
+		$url = '1/metadata/';
 		$url .= ($sandbox) ? 'sandbox/' : 'dropbox/';
 		$url .= trim((string) $path, '/');
 
@@ -996,7 +996,7 @@ class Dropbox
 	public function thumbnails($path, $size = 'small')
 	{
 		// build url
-		$url = '0/thumbnails/dropbox/';
+		$url = '1/thumbnails/dropbox/';
 		$url .= trim((string) $path, '/');
 
 		// build parameters
@@ -1019,7 +1019,7 @@ class Dropbox
 	public function fileopsCopy($fromPath, $toPath, $sandbox = false)
 	{
 		// build url
-		$url = '0/fileops/copy';
+		$url = '1/fileops/copy';
 
 		// build parameters
 		$parameters['from_path'] = (string) $fromPath;
@@ -1041,7 +1041,7 @@ class Dropbox
 	public function fileopsCreateFolder($path, $sandbox = false)
 	{
 		// build url
-		$url = '0/fileops/create_folder';
+		$url = '1/fileops/create_folder';
 
 		// build parameters
 		$parameters['path'] = trim((string) $path, '/');
@@ -1062,7 +1062,7 @@ class Dropbox
 	public function fileopsDelete($path, $sandbox = false)
 	{
 		// build url
-		$url = '0/fileops/delete';
+		$url = '1/fileops/delete';
 
 		// build parameters
 		$parameters['path'] = trim((string) $path, '/');
@@ -1084,7 +1084,7 @@ class Dropbox
 	public function fileopsMove($fromPath, $toPath, $sandbox = false)
 	{
 		// build url
-		$url = '0/fileops/move';
+		$url = '1/fileops/move';
 
 		// build parameters
 		$parameters['from_path'] = (string) $fromPath;

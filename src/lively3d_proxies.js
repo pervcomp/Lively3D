@@ -49,6 +49,7 @@
 		
 			var LivelyState = '';
 			var state = [];
+			var Applications = Lively3D.GetApplications();
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
 					var app = Applications[i];
@@ -57,13 +58,13 @@
 						Lively3D.Minimize(app);
 					}
 					var AppJSON = {
-						Name: app.name,
-						Location: { x: app.current.getLocX(), y: app.current.getLocY(), z: app.current.getLocZ()},
-						Rotation: app.current.getRotation(),
+						Name: app.GetName(),
+						Location: { x: app.GetCurrentSceneObject().getLocX(), y: app.GetCurrentSceneObject().getLocY(), z: app.GetCurrentSceneObject().getLocZ()},
+						Rotation: app.GetCurrentSceneObject().getRotation(),
 						Closed: app.isClosed(),
 						Maximized: maximized,
-						Code: app.AppCode.toString(),
-						Init: app.AppInit.toString(),
+						Code: app.GetApplicationCode().toString(),
+						Init: app.GetInitializationCode().toString(),
 						AppState: app.Save()
 					}
 					
@@ -74,7 +75,7 @@
 				}
 			}
 			LivelyState = JSON.stringify(state);
-			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + username);
+			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + Lively3D.GetUsername());
 		},
 		
 		/**
@@ -83,7 +84,7 @@
 		*/
 		LoadDesktop: function(filename){
 			
-			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + username + '/');
+			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + Lively3D.GetUsername() + '/');
 		},
 		
 		/**
@@ -91,7 +92,7 @@
 		*/
 		ShowStateList: function(){
 			
-			$.get("getFileList.php", {path: 'states/' + username}, function(list){
+			$.get("getFileList.php", {path: 'states/' + Lively3D.GetUsername()}, function(list){
 				var files = JSON.parse(list);
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();
@@ -165,15 +166,15 @@
 	};
 	
 	var SetAppLocation = function(App, location){
-		App.current.setLocX(location.x);
-		App.current.setLocY(location.y);
-		App.current.setLocZ(location.z);
+		App.GetCurrentSceneObject().setLocX(location.x);
+		App.GetCurrentSceneObject().setLocY(location.y);
+		App.GetCurrentSceneObject().setLocZ(location.z);
 	};
 	
 	var SetAppRotation = function(App, rotation){
-		App.current.setRotX(rotation.x);
-		App.current.setRotY(rotation.y);
-		App.current.setRotZ(rotation.z);
+		App.GetCurrentSceneObject().setRotX(rotation.x);
+		App.GetCurrentSceneObject().setRotY(rotation.y);
+		App.GetCurrentSceneObject().setRotZ(rotation.z);
 	};
 	
 	
@@ -223,7 +224,7 @@
 			
 			var state = {};
 			state.name = name;
-			state.user = username;
+			state.user = Lively3D.GetUsername();
 			state.applications = [];
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
@@ -273,7 +274,7 @@
 				Applications.splice(0, 1);
 			}
 			
-			$.get("/lively3d/node/states/" + username + '/' + name, function (data){
+			$.get("/lively3d/node/states/" + Lively3D.GetUsername() + '/' + name, function (data){
 				var apps = data.applications;
 				for ( var i in apps){
 					if ( apps.hasOwnProperty(i)){
@@ -306,7 +307,7 @@
 		*/
 		ShowStateList: function(){
 			
-			$.get("/lively3d/node/states/" + username, function(files){
+			$.get("/lively3d/node/states/" + Lively3D.GetUsername(), function(files){
 				
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();

@@ -272,6 +272,13 @@
 			ApplicationCode = code;
 			return this;
 		}
+		/**
+			Gets application code.
+			@return application code.
+		*/
+		this.GetApplicationCode = function(){
+			return ApplicationCode;
+		}
 		
 		var InitializationCode;
 		/**
@@ -281,6 +288,14 @@
 		this.SetInitializationCode = function(code){
 			InitializationCode = code;
 			return this;
+		}
+		
+		/**
+			Gets InitializationCode code.
+			@return InitializationCode code.
+		*/
+		this.GetInitializationCode = function(){
+			return InitializationCode;
 		}
 		
 		/**
