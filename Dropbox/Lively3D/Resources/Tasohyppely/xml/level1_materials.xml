@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE glge SYSTEM "glge.dtd">
+<!-- Created by Blender 2.58 (sub 1) - www.blender.org, source file: 'level1_7versio.blend' -->
+<glge>
+	<material id="coinmaterial" color="rgb(204,204,204)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+		<texture id="cointextureTex" src="../textures/coin_back.png" crossOrigin="true"/>
+		<material_layer texture="#cointextureTex" mapinput="UV1" mapto="M_COLOR" />
+	</material>
+	<material id="endmaterial" color="rgb(204,204,204)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+		<texture id="endtextureTex" src="../textures/redrock.png" crossOrigin="true" />
+		<material_layer texture="#endtextureTex" mapinput="UV1" mapto="M_COLOR" />
+	</material>
+	<material id="grassmaterial" color="rgb(204,198,195)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+		<texture id="grasstextureTex" src="../textures/grass.png" crossOrigin="true" />
+		<material_layer texture="#grasstextureTex" mapinput="UV1" mapto="M_COLOR" />
+	</material>
+	<material id="invisible_plain" color="rgb(204,204,204)" specular="0.500000" shininess="511.000000" emit="0.000000" >
+	</material>
+	<material id="jumpmaterial" color="rgb(0,204,0)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+	</material>
+</glge>

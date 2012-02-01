@@ -52,7 +52,7 @@ if ( isset($_GET['name']) ){
 else{
 	$name = '';
 }
-$response = $dropbox->FilesGet('GLGE/' . $path . $name);
+$response = $dropbox->FilesGet('Lively3D/' . $path . $name);
 
 $file = base64_decode($response['data']);
 

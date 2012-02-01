@@ -78,7 +78,7 @@ $tokenSecret = "your token secret";
 $dropbox->setOAuthToken($token);
 $dropbox->setOAuthTokenSecret($tokenSecret);
 
-$dropbox->FilesPost('GLGE/' . $path , $target_path . $path . '/' . $filename); 
+$dropbox->FilesPost('Lively3D/' . $path , $target_path . $path . '/' . $filename); 
 
 ?>
 

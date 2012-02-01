@@ -24,14 +24,14 @@
 		}
 	}
 	
-	$response = $dropbox->metadata('/GLGE/' . $_GET["path"]);
+	$response = $dropbox->metadata('/Lively3D/' . $_GET["path"]);
 	$contents = $response['contents'];
 	
 	$filelist = array();
-	$root = '/GLGE/';
+	$root = '/Lively3D/';
 
 	if ( strlen($path) == 1 ){
-		$root = '/GLGE';
+		$root = '/Lively3D';
 	}
 	foreach($contents as $file ){
 		if ( $file['is_dir'] === $dirs ){

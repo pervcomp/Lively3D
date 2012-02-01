@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<glge>
+
+  <!-- MESHIT -->
+  <import url="skydome_meshes.xml" />
+  <import url="level1_meshes.xml" />
+  
+	<mesh id="cube">
+		<positions>
+       1,  1, 1,
+       1,  1, -1,
+      -1,  1, -1,
+       1,  1, 1,
+      -1,  1, -1,
+      -1,  1, 1,
+
+      -1, -1, -1,
+      -1, -1, 1,
+      -1,  1, 1,
+      -1, -1, -1,
+      -1,  1, 1,
+      -1,  1, -1,
+
+       1, -1, -1,
+       1, -1, 1,
+      -1, -1, -1,
+       1, -1, 1,
+      -1, -1, 1,
+      -1, -1, -1,
+
+       1,  1, -1,
+       1,  1, 1,
+       1, -1, -1,
+       1,  1, 1,
+       1, -1, 1,
+       1, -1, -1,
+       
+       1,  1, 1,
+      -1,  1, 1,
+       1, -1, 1,
+      -1,  1, 1,
+      -1, -1, 1,
+       1, -1, 1,
+
+       1,  1, -1,
+       1, -1, -1,
+      -1, -1, -1,
+       1,  1, -1,
+      -1, -1, -1,
+      -1,  1, -1
+		</positions>
+		<normals>
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1
+		</normals>
+	</mesh>
+  <mesh id="player2">
+    <positions>
+       0.3,  0.3, 0.3,
+       0.3,  0.3, -0.3,
+      -0.3,  0.3, -0.3,
+       0.3,  0.3, 0.3,
+      -0.3,  0.3, -0.3,
+      -0.3,  0.3, 0.3,
+
+      -0.3, -0.3, -0.3,
+      -0.3, -0.3, 0.3,
+      -0.3,  0.3, 0.3,
+      -0.3, -0.3, -0.3,
+      -0.3,  0.3, 0.3,
+      -0.3,  0.3, -0.3,
+
+       0.3, -0.3, -0.3,
+       0.3, -0.3, 0.3,
+      -0.3, -0.3, -0.3,
+       0.3, -0.3, 0.3,
+      -0.3, -0.3, 0.3,
+      -0.3, -0.3, -0.3,
+
+       0.3,  0.3, -0.3,
+       0.3,  0.3, 0.3,
+       0.3, -0.3, -0.3,
+       0.3,  0.3, 0.3,
+       0.3, -0.3, 0.3,
+       0.3, -0.3, -0.3,
+       
+       0.3,  0.3, 0.3,
+      -0.3,  0.3, 0.3,
+       0.3, -0.3, 0.3,
+      -0.3,  0.3, 0.3,
+      -0.3, -0.3, 0.3,
+       0.3, -0.3, 0.3,
+
+       0.3,  0.3, -0.3,
+       0.3, -0.3, -0.3,
+      -0.3, -0.3, -0.3,
+       0.3,  0.3, -0.3,
+      -0.3, -0.3, -0.3,
+      -0.3,  0.3, -0.3
+    </positions>
+    <normals>
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+      0, 1, 0,
+
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+      0, -1, 0,
+
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1,
+      0, 0,-1
+		</normals>
+  </mesh>
+ <!-- MESHIT LOPPUU -->
+  
+  <!-- MATERIAALIT -->
+  <import url="skydome_materials.xml" />
+  <import url="level1_materials.xml" />
+
+  <material id="playerMat" specular="1" color="#0055cc" />
+  <!-- MATERIAALIT LOPPUU -->
+    
+
+  
+  <camera id="mainCamera" loc_x="0.0" loc_y="0.0" loc_z="0.0" rot_x="0.0" rot_y="0.0" rot_z="0.0"/>
+
+	<scene id="mainScene" camera="#mainCamera" ambient_color="#FFF" fog_type="FOG_LINEAR">
+        
+    <!-- PELAAJAHAHMO -->
+    <group id="player_group">
+      <object id="player_movable_1" mesh="#player2" material="#playerMat" 
+        scale_x="1.0" scale_y="1.0" scale_z="1.0"
+        loc_x ="0.0" loc_y="0.0" loc_z="0.0"
+        rot_x="0.0" rot_y="0.0" rot_z="0.0" />
+    </group>
+    <!-- PELAAJAHAHMO LOPPUU -->
+    
+
+
+    <!-- HYPPELYTASOT -->
+    <object id="BOX33_collect" mesh="#BOX20.013Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-58.000000" loc_y="18.000000" loc_z="2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX32_collect" mesh="#BOX20.012Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-64.000000" loc_y="18.000000" loc_z="2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX31_collect" mesh="#BOX20.011Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-70.000000" loc_y="18.000000" loc_z="2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX30_collect" mesh="#BOX20.010Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-67.000000" loc_y="18.000000" loc_z="-5.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX29_collect" mesh="#BOX20.009Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-61.000000" loc_y="18.000000" loc_z="-5.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX28_collect" mesh="#BOX20.008Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-55.000000" loc_y="18.000000" loc_z="-5.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX27_collect" mesh="#BOX20.007Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-22.000000" loc_y="11.000000" loc_z="-2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX26_collect" mesh="#BOX20.006Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-13.000000" loc_y="11.000000" loc_z="-2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX25_collect" mesh="#BOX20.005Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="0.000000" loc_y="11.000000" loc_z="-2.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX24_collect" mesh="#BOX20.004Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="10.000000" loc_y="8.000000" loc_z="17.000000"
+			rot_x="0.000000" rot_y="-0.000000" rot_z="3.141593"
+		/>
+		<object id="BOX23_collect" mesh="#BOX20.003Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-3.000000" loc_y="3.000000" loc_z="38.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX22_collect" mesh="#BOX20.002Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-8.000000" loc_y="3.000000" loc_z="33.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX21_collect" mesh="#BOX20.001Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="-10.000000" loc_y="2.000000" loc_z="-17.000000"
+			rot_x="-3.141593" rot_y="-1.570796" rot_z="0.000000"
+		/>
+		<object id="BOX19" mesh="#box19dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="13.520816" scale_y="13.520816" scale_z="2.704163"
+			material="#endmaterial"
+			loc_x="-62.480171" loc_y="13.523722" loc_z="-1.387400"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX18" mesh="#box18dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-43.078934" loc_y="13.597095" loc_z="-1.483919"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX17" mesh="#box17dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-34.101646" loc_y="10.612015" loc_z="-1.693707"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX08" mesh="#box08dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="7.589466" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-20.530914" loc_y="-0.896656" loc_z="35.514675"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX13" mesh="#box13dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="10.264356" loc_y="4.640950" loc_z="7.465119"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="PLANE_death" mesh="#plane1.materialMesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.001373" scale_y="0.001373" scale_z="0.001373"
+			material="#invisible_plain"
+			loc_x="-10.285346" loc_y="-24.911135" loc_z="14.835488"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX16" mesh="#box16dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="12.106196" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-17.478559" loc_y="7.291442" loc_z="-1.782101"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX15" mesh="#box15dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="0.304137" loc_y="7.289499" loc_z="-1.791655"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX14" mesh="#box14dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="10.404875" loc_y="7.407455" loc_z="-1.811039"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX12" mesh="#box12dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="10.404871" loc_y="4.640951" loc_z="17.160671"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX11" mesh="#box11dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="10.404871" loc_y="1.793083" loc_z="25.297447"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX05" mesh="#box05dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-19.957766" loc_y="-0.982595" loc_z="-17.072573"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX10" mesh="#box10dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="6.324555" scale_y="6.324555" scale_z="1.185854"
+			material="#grassmaterial"
+			loc_x="10.533213" loc_y="-0.871002" loc_z="35.548840"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX09" mesh="#box09dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="7.500000" scale_y="7.500000" scale_z="1.500000"
+			material="#endmaterial"
+			loc_x="-5.108090" loc_y="-0.941308" loc_z="35.656303"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX07_jumpboost" mesh="#box07dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#jumpmaterial"
+			loc_x="-20.177496" loc_y="-0.978254" loc_z="14.661385"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX06" mesh="#box06dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="11.355227" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-20.118277" loc_y="-0.984324" loc_z="-1.399815"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX04" mesh="#box04dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-9.859241" loc_y="-0.939085" loc_z="-17.131289"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX03" mesh="#box03dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="0.217601" loc_y="-0.962000" loc_z="-16.926817"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX02" mesh="#box02dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="0.043857" loc_y="-3.959940" loc_z="-8.488882"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX01" mesh="#box01dataMesh"
+			rot_order="ROT_ZYX"
+			scale_x="4.000000" scale_y="4.000000" scale_z="0.750000"
+			material="#grassmaterial"
+			loc_x="-0.028279" loc_y="-6.794674" loc_z="-0.110161"
+			rot_x="4.712389" rot_y="-0.000000" rot_z="0.000000"
+		/>
+		<object id="BOX20_collect" mesh="#BOX20Mesh"
+			rot_order="ROT_ZYX"
+			scale_x="0.50000" scale_y="0.50000" scale_z="0.750000"
+			material="#coinmaterial"
+			loc_x="0.000000" loc_y="-1.000000" loc_z="-9.000000"
+			rot_x="0.000000" rot_y="-0.000000" rot_z="3.141593"
+		/>
+    <!-- HYPPELYTASOT LOPPUU -->
+    
+    
+    <!-- SKYBOX -->
+    <object id="Skydome_light" mesh="#SkydomeMesh"
+			rot_order="ROT_ZYX"
+			scale_x="60.000000" scale_y="60.000000" scale_z="60.000000"
+			material="#skydome"
+			loc_x="0.000000" loc_y="0.000000" loc_z="0.000000"
+			rot_x="-1.570796" rot_y="-0.000000" rot_z="0.000000"
+		/>
+    <!-- SKYBOX LOPPUU -->
+    
+    <light id="mainlight" loc_x="10.0" loc_y="15.0" loc_z="10.0" rot_x="-1.3" color="#0000ff" type="L_POINT" />
+    
+	</scene>
+
+</glge>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE glge SYSTEM "glge.dtd">
+<!-- Created by Blender 2.58 (sub 1) - www.blender.org, source file: 'skydome_yhtenainen.blend' -->
+<glge>
+	<material id="Material" color="rgb(204,204,204)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+	</material>
+	<material id="skydome" color="rgb(204,204,204)" specular="0.500000" shininess="50.000000" emit="0.000000" >
+		<texture id="skydomeTex" src="../textures/skydome.png" crossOrigin="true" />
+		<material_layer texture="#skydomeTex" mapinput="UV1" mapto="M_COLOR" />
+	</material>
+</glge>

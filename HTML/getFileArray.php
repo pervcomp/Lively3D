@@ -77,18 +77,18 @@ foreach( $names as $name ){
 		}
 		if ( $folder != $prevFolder ){
 			$prevFolder = $folder;
-			$response = $dropbox->metadata('/GLGE/' . $path . $folder);
+			$response = $dropbox->metadata('/Lively3D/' . $path . $folder);
 			$contents = $response['contents'];
 			
 		}
 	}
 	
 	foreach( $contents as $entry ){
-		if ( $entry['path'] == '/GLGE/' . $path . $name ){
+		if ( $entry['path'] == '/Lively3D/' . $path . $name ){
 			$time = strtotime($entry['modified']);
 
 			if ( !file_exists('dropboxfiles/' . $path . $name) || $time > filemtime('dropboxfiles/' . $path . $name) ){
-				$fileresponse  = $dropbox->FilesGet('GLGE/' . $path . $name);
+				$fileresponse  = $dropbox->FilesGet('Lively3D/' . $path . $name);
 				$file = base64_decode($fileresponse['data']);
 				
 				if ( isset($_GET["JSON"]) && $_GET["JSON"] == true){
