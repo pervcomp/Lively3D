@@ -75,7 +75,7 @@ var listFiles = function(list, all){
 	if(!list){
 		list = [];
 	}
-	console.log(all);
+	
 	for ( var i in flags ){
 		if ((flags[i] || all ) && srcFiles[i] ){
 			for ( var j = 0; j < srcFiles[i].length; j++){
@@ -141,6 +141,10 @@ if ( flags.Lively3D ){
 		combinedList = combinedList.join("");
 		fs.writeFileSync('lively3d-compiled.js', combinedList);
 		
+		var match = combinedList.match(/^\s*(\/\*[\s\S]+?\*\/)/);
+		var license = match[0];
+		license = license.replace(/^\s*\/\*/, '/*!');
+		
 		if ( flags.uglify ){
 			var jsp = require("./externals/uglifyjs/lib/parse-js");
 			var pro = require('./externals/uglifyjs/lib/process');
@@ -152,7 +156,7 @@ if ( flags.Lively3D ){
 			console.log("Optimizing..");
 			ast = pro.ast_squeeze(ast);
 			console.log("Generating minified code..");
-			var final_code = pro.gen_code(ast);
+			var final_code = license + "\n" + pro.gen_code(ast);
 			console.log("Writing minified code: lively3d-compiled-min.js");
 			fs.writeFileSync("lively3d-compiled-min.js", final_code);
 			console.log("Copying to the output directory..");

@@ -1,3 +1,25 @@
+/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 /**
 	@fileOverview Lively3D-library for WebGL.
 	@author Jari-Pekka Voutilainen
@@ -472,33 +494,7 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetCurrentSceneIndex = function(){
 		return CurrentScene;
 	}
-	/**
-		Switches to the next scene. If current scene is the last scene, switches to the first scene.
-	*/
-	Lively3D.ChangeScene = function(){
-		
-		for ( var i in Applications){
-			if ( Applications.hasOwnProperty(i)){
-				if ( !Applications[i].isClosed() ){
-					Lively3D.Close(Applications[i]);
-				}
-			}
-		}
-		
-		CurrentScene += 1;
-		if (CurrentScene == Scenes.length ){
-			CurrentScene = 0;
-		}
-		
-		for ( var i in Applications){
-			Applications[i].SetCurrentSceneObject(CurrentScene);
-		}
-				
-		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
-		DefaultCanvasEvents(document.getElementById(canvasName));
-		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
-		
-	}
+	
 
 	/**
 		@namespace Functions for proxying files through serverside PHP.
@@ -829,28 +825,13 @@ var Lively3D = (function(Lively3D){
 	
 	/**
 		Gets GLGE MouseInput object.
-		@returns MouseInput Object.
+		@return MouseInput Object.
 	*/
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
 	
-	var username;
 	
-	/**
-		Gets User name.
-		@returns Username.
-	*/
-	Lively3D.GetUsername = function(){
-		return username;
-	}
-	
-	/**
-		Sets User name.
-	*/
-	Lively3D.SetUsername = function(name){
-		username = name;
-	}
 	
 	/**
 		Shows notification about completion of downloading Application or 3D Scene. 

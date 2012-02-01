@@ -1,3 +1,25 @@
+/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 (function(Lively3D){
 	
 	/** 
@@ -49,7 +71,6 @@
 		
 			var LivelyState = '';
 			var state = [];
-			var Applications = Lively3D.GetApplications();
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
 					var app = Applications[i];
@@ -58,13 +79,13 @@
 						Lively3D.Minimize(app);
 					}
 					var AppJSON = {
-						Name: app.GetName(),
-						Location: { x: app.GetCurrentSceneObject().getLocX(), y: app.GetCurrentSceneObject().getLocY(), z: app.GetCurrentSceneObject().getLocZ()},
-						Rotation: app.GetCurrentSceneObject().getRotation(),
+						Name: app.name,
+						Location: { x: app.current.getLocX(), y: app.current.getLocY(), z: app.current.getLocZ()},
+						Rotation: app.current.getRotation(),
 						Closed: app.isClosed(),
 						Maximized: maximized,
-						Code: app.GetApplicationCode().toString(),
-						Init: app.GetInitializationCode().toString(),
+						Code: app.AppCode.toString(),
+						Init: app.AppInit.toString(),
 						AppState: app.Save()
 					}
 					
@@ -75,7 +96,7 @@
 				}
 			}
 			LivelyState = JSON.stringify(state);
-			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + Lively3D.GetUsername());
+			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + username);
 		},
 		
 		/**
@@ -84,7 +105,7 @@
 		*/
 		LoadDesktop: function(filename){
 			
-			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + Lively3D.GetUsername() + '/');
+			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + username + '/');
 		},
 		
 		/**
@@ -92,7 +113,7 @@
 		*/
 		ShowStateList: function(){
 			
-			$.get("getFileList.php", {path: 'states/' + Lively3D.GetUsername()}, function(list){
+			$.get("getFileList.php", {path: 'states/' + username}, function(list){
 				var files = JSON.parse(list);
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();
@@ -166,15 +187,15 @@
 	};
 	
 	var SetAppLocation = function(App, location){
-		App.GetCurrentSceneObject().setLocX(location.x);
-		App.GetCurrentSceneObject().setLocY(location.y);
-		App.GetCurrentSceneObject().setLocZ(location.z);
+		App.current.setLocX(location.x);
+		App.current.setLocY(location.y);
+		App.current.setLocZ(location.z);
 	};
 	
 	var SetAppRotation = function(App, rotation){
-		App.GetCurrentSceneObject().setRotX(rotation.x);
-		App.GetCurrentSceneObject().setRotY(rotation.y);
-		App.GetCurrentSceneObject().setRotZ(rotation.z);
+		App.current.setRotX(rotation.x);
+		App.current.setRotY(rotation.y);
+		App.current.setRotZ(rotation.z);
 	};
 	
 	
@@ -224,7 +245,7 @@
 			
 			var state = {};
 			state.name = name;
-			state.user = Lively3D.GetUsername();
+			state.user = username;
 			state.applications = [];
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
@@ -274,7 +295,7 @@
 				Applications.splice(0, 1);
 			}
 			
-			$.get("/lively3d/node/states/" + Lively3D.GetUsername() + '/' + name, function (data){
+			$.get("/lively3d/node/states/" + username + '/' + name, function (data){
 				var apps = data.applications;
 				for ( var i in apps){
 					if ( apps.hasOwnProperty(i)){
@@ -307,7 +328,7 @@
 		*/
 		ShowStateList: function(){
 			
-			$.get("/lively3d/node/states/" + Lively3D.GetUsername(), function(files){
+			$.get("/lively3d/node/states/" + username, function(files){
 				
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();

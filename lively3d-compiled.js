@@ -1,3 +1,25 @@
+/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 /**
 	@fileOverview Lively3D-library for WebGL.
 	@author Jari-Pekka Voutilainen
@@ -472,33 +494,7 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetCurrentSceneIndex = function(){
 		return CurrentScene;
 	}
-	/**
-		Switches to the next scene. If current scene is the last scene, switches to the first scene.
-	*/
-	Lively3D.ChangeScene = function(){
-		
-		for ( var i in Applications){
-			if ( Applications.hasOwnProperty(i)){
-				if ( !Applications[i].isClosed() ){
-					Lively3D.Close(Applications[i]);
-				}
-			}
-		}
-		
-		CurrentScene += 1;
-		if (CurrentScene == Scenes.length ){
-			CurrentScene = 0;
-		}
-		
-		for ( var i in Applications){
-			Applications[i].SetCurrentSceneObject(CurrentScene);
-		}
-				
-		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
-		DefaultCanvasEvents(document.getElementById(canvasName));
-		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
-		
-	}
+	
 
 	/**
 		@namespace Functions for proxying files through serverside PHP.
@@ -829,28 +825,13 @@ var Lively3D = (function(Lively3D){
 	
 	/**
 		Gets GLGE MouseInput object.
-		@returns MouseInput Object.
+		@return MouseInput Object.
 	*/
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
 	
-	var username;
 	
-	/**
-		Gets User name.
-		@returns Username.
-	*/
-	Lively3D.GetUsername = function(){
-		return username;
-	}
-	
-	/**
-		Sets User name.
-	*/
-	Lively3D.SetUsername = function(name){
-		username = name;
-	}
 	
 	/**
 		Shows notification about completion of downloading Application or 3D Scene. 
@@ -891,6 +872,29 @@ var Lively3D = (function(Lively3D){
 
 	return Lively3D;
 }(Lively3D));
+/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
 (function(Lively3D){
 	/**
 		Creates new application.
@@ -1165,13 +1169,6 @@ var Lively3D = (function(Lively3D){
 			ApplicationCode = code;
 			return this;
 		}
-		/**
-			Gets application code.
-			@return application code.
-		*/
-		this.GetApplicationCode = function(){
-			return ApplicationCode;
-		}
 		
 		var InitializationCode;
 		/**
@@ -1181,14 +1178,6 @@ var Lively3D = (function(Lively3D){
 		this.SetInitializationCode = function(code){
 			InitializationCode = code;
 			return this;
-		}
-		
-		/**
-			Gets InitializationCode code.
-			@return InitializationCode code.
-		*/
-		this.GetInitializationCode = function(){
-			return InitializationCode;
 		}
 		
 		/**
@@ -1218,7 +1207,29 @@ var Lively3D = (function(Lively3D){
 			return this;
 		}
 	}
-}(Lively3D));(function(Lively3D){
+}(Lively3D));/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+(function(Lively3D){
 	/**
 		@class Represents single scene.
 	*/
@@ -1260,7 +1271,29 @@ var Lively3D = (function(Lively3D){
 			return Scene;
 		}
 	};
-}(Lively3D));(function(Lively3D){
+}(Lively3D));/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+(function(Lively3D){
 	/**
 		@namespace Functions for user interface.
 	*/
@@ -1420,7 +1453,33 @@ var Lively3D = (function(Lively3D){
 		}
 	};
 	
-	
+	/**
+		Switches to the next scene. If current scene is the last scene, switches to the first scene.
+	*/
+	Lively3D.UI.ChangeScene = function(){
+		
+		for ( var i in Applications){
+			if ( Applications.hasOwnProperty(i)){
+				if ( !Applications[i].isClosed() ){
+					Lively3D.Close(Applications[i]);
+				}
+			}
+		}
+		
+		CurrentScene += 1;
+		if (CurrentScene == Scenes.length ){
+			CurrentScene = 0;
+		}
+		
+		for ( var i in Applications){
+			Applications[i].SetCurrentSceneObject(CurrentScene);
+		}
+				
+		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
+		DefaultCanvasEvents(document.getElementById(canvasName));
+		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
+		
+	}
 	
 	var tmpApp;
 	/**
@@ -1522,21 +1581,43 @@ var Lively3D = (function(Lively3D){
 		});
 	}
 	
-	
+	var username;
 	/**
 		Saves username from the original dialog.
 	*/
 	Lively3D.UI.EnterUsername = function(){
 		var name = $("#username");
 		if ( name[0].value.length != 0 ){
-			Lively3D.SetUsername(name[0].value);
+			username = name[0].value;
 			this.CloseDialog();
 		}
 		else{
 			$("<h3>Please enter username</h3>").appendTo("#dialog");
 		}
 	}
-}(Lively3D));(function(Lively3D){
+}(Lively3D));/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+(function(Lively3D){
 	
 	/** 
 		Interface implementations for serverside proxies. 
@@ -1587,7 +1668,6 @@ var Lively3D = (function(Lively3D){
 		
 			var LivelyState = '';
 			var state = [];
-			var Applications = Lively3D.GetApplications();
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
 					var app = Applications[i];
@@ -1596,13 +1676,13 @@ var Lively3D = (function(Lively3D){
 						Lively3D.Minimize(app);
 					}
 					var AppJSON = {
-						Name: app.GetName(),
-						Location: { x: app.GetCurrentSceneObject().getLocX(), y: app.GetCurrentSceneObject().getLocY(), z: app.GetCurrentSceneObject().getLocZ()},
-						Rotation: app.GetCurrentSceneObject().getRotation(),
+						Name: app.name,
+						Location: { x: app.current.getLocX(), y: app.current.getLocY(), z: app.current.getLocZ()},
+						Rotation: app.current.getRotation(),
 						Closed: app.isClosed(),
 						Maximized: maximized,
-						Code: app.GetApplicationCode().toString(),
-						Init: app.GetInitializationCode().toString(),
+						Code: app.AppCode.toString(),
+						Init: app.AppInit.toString(),
 						AppState: app.Save()
 					}
 					
@@ -1613,7 +1693,7 @@ var Lively3D = (function(Lively3D){
 				}
 			}
 			LivelyState = JSON.stringify(state);
-			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + Lively3D.GetUsername());
+			Lively3D.FileOperations.uploadScript(filename, LivelyState, "states/" + username);
 		},
 		
 		/**
@@ -1622,7 +1702,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		LoadDesktop: function(filename){
 			
-			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + Lively3D.GetUsername() + '/');
+			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + username + '/');
 		},
 		
 		/**
@@ -1630,7 +1710,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		ShowStateList: function(){
 			
-			$.get("getFileList.php", {path: 'states/' + Lively3D.GetUsername()}, function(list){
+			$.get("getFileList.php", {path: 'states/' + username}, function(list){
 				var files = JSON.parse(list);
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();
@@ -1704,15 +1784,15 @@ var Lively3D = (function(Lively3D){
 	};
 	
 	var SetAppLocation = function(App, location){
-		App.GetCurrentSceneObject().setLocX(location.x);
-		App.GetCurrentSceneObject().setLocY(location.y);
-		App.GetCurrentSceneObject().setLocZ(location.z);
+		App.current.setLocX(location.x);
+		App.current.setLocY(location.y);
+		App.current.setLocZ(location.z);
 	};
 	
 	var SetAppRotation = function(App, rotation){
-		App.GetCurrentSceneObject().setRotX(rotation.x);
-		App.GetCurrentSceneObject().setRotY(rotation.y);
-		App.GetCurrentSceneObject().setRotZ(rotation.z);
+		App.current.setRotX(rotation.x);
+		App.current.setRotY(rotation.y);
+		App.current.setRotZ(rotation.z);
 	};
 	
 	
@@ -1762,7 +1842,7 @@ var Lively3D = (function(Lively3D){
 			
 			var state = {};
 			state.name = name;
-			state.user = Lively3D.GetUsername();
+			state.user = username;
 			state.applications = [];
 			for ( var i in Applications ){
 				if ( Applications.hasOwnProperty(i)){
@@ -1812,7 +1892,7 @@ var Lively3D = (function(Lively3D){
 				Applications.splice(0, 1);
 			}
 			
-			$.get("/lively3d/node/states/" + Lively3D.GetUsername() + '/' + name, function (data){
+			$.get("/lively3d/node/states/" + username + '/' + name, function (data){
 				var apps = data.applications;
 				for ( var i in apps){
 					if ( apps.hasOwnProperty(i)){
@@ -1845,7 +1925,7 @@ var Lively3D = (function(Lively3D){
 		*/
 		ShowStateList: function(){
 			
-			$.get("/lively3d/node/states/" + Lively3D.GetUsername(), function(files){
+			$.get("/lively3d/node/states/" + username, function(files){
 				
 				var content = $('<h1>Select State</h1><div></div>');
 				var element = content.last();

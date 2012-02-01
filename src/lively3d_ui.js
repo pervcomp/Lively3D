@@ -1,3 +1,25 @@
+/*
+Copyright (C) 2012 Jari-Pekka Voutilainen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 (function(Lively3D){
 	/**
 		@namespace Functions for user interface.
@@ -158,7 +180,33 @@
 		}
 	};
 	
-	
+	/**
+		Switches to the next scene. If current scene is the last scene, switches to the first scene.
+	*/
+	Lively3D.UI.ChangeScene = function(){
+		
+		for ( var i in Applications){
+			if ( Applications.hasOwnProperty(i)){
+				if ( !Applications[i].isClosed() ){
+					Lively3D.Close(Applications[i]);
+				}
+			}
+		}
+		
+		CurrentScene += 1;
+		if (CurrentScene == Scenes.length ){
+			CurrentScene = 0;
+		}
+		
+		for ( var i in Applications){
+			Applications[i].SetCurrentSceneObject(CurrentScene);
+		}
+				
+		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
+		DefaultCanvasEvents(document.getElementById(canvasName));
+		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
+		
+	}
 	
 	var tmpApp;
 	/**
@@ -260,14 +308,14 @@
 		});
 	}
 	
-	
+	var username;
 	/**
 		Saves username from the original dialog.
 	*/
 	Lively3D.UI.EnterUsername = function(){
 		var name = $("#username");
 		if ( name[0].value.length != 0 ){
-			Lively3D.SetUsername(name[0].value);
+			username = name[0].value;
 			this.CloseDialog();
 		}
 		else{
