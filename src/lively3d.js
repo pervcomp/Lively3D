@@ -351,26 +351,26 @@ var Lively3D = (function(Lively3D){
 	*/
 	Lively3D.Close = function(app){
 
+	
+		app.GetWindowObject().setScale(1,1,1);
 		
-		AppIsOpen = false;
+		if( app.isMaximized() ){
+			Lively3D.Minimize(app);
+		}
+		
+		app.ToggleWindowObject();
+		this.GLGE.clickedObject = null;
+		app.Close();
 		for ( var i in Scenes ){
 			if ( Scenes.hasOwnProperty(i) ){
 				Scenes[i].GetScene().addChild(app.GetSceneObject(i));
-				//if ( Scenes[i].GetModel().Close ){
-				//	Scenes[i].GetModel().Close(app);
-				//}
 			}
 		}
 		
 		Scenes[CurrentScene].GetScene().removeChild(app.GetWindowObject());
 		Scenes[CurrentScene].GetModel().Close(app, Scenes[CurrentScene].GetScene());
 		
-		app.GetWindowObject().setScale(1,1,1);
 		
-		app.Minimize();
-		app.ToggleWindowObject();
-		this.GLGE.clickedObject = null;
-		app.Close();
 		
 	}
 
@@ -894,6 +894,14 @@ var Lively3D = (function(Lively3D){
 			
 	};
 	
+	var username;
+	Lively3D.SetUsername = function(name){
+		username = name;
+	}
+	
+	Lively3D.GetUsername = function(){
+		return username;
+	}
 
 	return Lively3D;
 }(Lively3D));

@@ -296,6 +296,14 @@ SOFTWARE.
 			return this;
 		}
 		
+		/**
+			Gets application code.
+			@returns Code of the canvas application.
+		*/
+		this.GetApplicationCode = function(){
+			return ApplicationCode;
+		}
+		
 		var InitializationCode;
 		/**
 			Sets application's initalization code.
@@ -304,6 +312,14 @@ SOFTWARE.
 		this.SetInitializationCode = function(code){
 			InitializationCode = code;
 			return this;
+		}
+		
+		/**
+			Gets application's iniitalization code.
+			@returns Initialization code.
+		*/
+		this.GetInitializationCode = function(){
+			return InitializationCode;
 		}
 		
 		/**

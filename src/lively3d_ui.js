@@ -282,14 +282,14 @@ SOFTWARE.
 		});
 	}
 	
-	var username;
+	
 	/**
 		Saves username from the original dialog.
 	*/
 	Lively3D.UI.EnterUsername = function(){
 		var name = $("#username");
 		if ( name[0].value.length != 0 ){
-			username = name[0].value;
+			Lively3D.SetUsername(name[0].value);
 			this.CloseDialog();
 		}
 		else{
