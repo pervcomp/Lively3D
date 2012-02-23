@@ -180,33 +180,7 @@ SOFTWARE.
 		}
 	};
 	
-	/**
-		Switches to the next scene. If current scene is the last scene, switches to the first scene.
-	*/
-	Lively3D.UI.ChangeScene = function(){
-		
-		for ( var i in Applications){
-			if ( Applications.hasOwnProperty(i)){
-				if ( !Applications[i].isClosed() ){
-					Lively3D.Close(Applications[i]);
-				}
-			}
-		}
-		
-		CurrentScene += 1;
-		if (CurrentScene == Scenes.length ){
-			CurrentScene = 0;
-		}
-		
-		for ( var i in Applications){
-			Applications[i].SetCurrentSceneObject(CurrentScene);
-		}
-				
-		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
-		DefaultCanvasEvents(document.getElementById(canvasName));
-		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
-		
-	}
+	
 	
 	var tmpApp;
 	/**

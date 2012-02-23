@@ -337,12 +337,11 @@ var Lively3D = (function(Lively3D){
 		Scenes[CurrentScene].GetScene().addChild(app.GetWindowObject());
 		Scenes[CurrentScene].GetModel().Open(app, Scenes[CurrentScene].GetScene());
 		
-		//app.closed = false;
+		
 		app.ToggleWindowObject();
 		this.GLGE.clickedObject = app.GetWindowMaterial();
-		//if (app.Open){
-			app.Open();
-		//}
+		app.Open();
+	
 		Lively3D.GLGE.hoverObject = null;
 	}
 
@@ -364,16 +363,15 @@ var Lively3D = (function(Lively3D){
 		}
 		
 		Scenes[CurrentScene].GetScene().removeChild(app.GetWindowObject());
-		
+		Scenes[CurrentScene].GetModel().Close(app, Scenes[CurrentScene].GetScene());
 		
 		app.GetWindowObject().setScale(1,1,1);
-		//app.closed = true;
+		
 		app.Minimize();
 		app.ToggleWindowObject();
 		this.GLGE.clickedObject = null;
-		//if (app.Close){
-			app.Close();
-		//}
+		app.Close();
+		
 	}
 
 	/**
@@ -831,6 +829,33 @@ var Lively3D = (function(Lively3D){
 		return mouse;
 	}
 	
+	/**
+		Switches to the next scene. If current scene is the last scene, switches to the first scene.
+	*/
+	Lively3D.ChangeScene = function(){
+		
+		for ( var i in Applications){
+			if ( Applications.hasOwnProperty(i)){
+				if ( !Applications[i].isClosed() ){
+					Lively3D.Close(Applications[i]);
+				}
+			}
+		}
+		
+		CurrentScene += 1;
+		if (CurrentScene == Scenes.length ){
+			CurrentScene = 0;
+		}
+		
+		for ( var i in Applications){
+			Applications[i].SetCurrentSceneObject(CurrentScene);
+		}
+				
+		Lively3D.GLGE.renderer.setScene(Scenes[CurrentScene].GetScene());
+		DefaultCanvasEvents(document.getElementById(canvasName));
+		Scenes[CurrentScene].GetModel().BindCanvasEvents(document.getElementById(canvasName));
+		
+	}
 	
 	
 	/**

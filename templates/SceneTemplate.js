@@ -38,10 +38,13 @@ var Scene = function(){
 		Lively3D.LoadCompleted();
 	}
 	
-	this.Open = function(app, camera){
+	this.Open = function(app, scene){
 		
 	}
 	
+	this.Close = function(app, scene){
+
+	}	
 }
 
 var model = new Scene();
