@@ -99,11 +99,7 @@ var SphereScene = function(){
 	this.AppVariable = "Sphere";
 	this.GLGEObject = "Sphere.object";
 	this.GLGEGroup = "Sphere.group";
-	/*	
-		"AppLively": "Sphere",
-		"AppObject": "Sphere.object",
-		"Group": "Sphere.group"
-	*/
+	
 	
 	this.Resources = {};
 	this.ResourceHandlers = {};
@@ -113,13 +109,17 @@ var SphereScene = function(){
 		Lively3D.LoadCompleted();
 	}
 	
-	this.Open = function(app, camera){
+	this.Open = function(app, scene){
 		app.GetWindowObject().setRotZ(0).setRotX(0).setRotY(Math.PI);
-		//app.window.setLookat(Lively3D.GetCurrentScene().scene.camera);
+		
 		app.GetWindowObject().setScale(3,3,3);
 		if ( app.GetWindowObject().getLocX() == 0 && app.GetWindowObject().getLocY() == 0 ){
 					app.GetWindowObject().setLoc(30,10,0);
 		}
+	}
+	
+	this.Close = function(){
+	
 	}
 	
 }
