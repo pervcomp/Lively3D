@@ -1739,9 +1739,9 @@ SOFTWARE.
 			var scenes = Lively3D.GetScenes();
 			for (var i = 0; i < appcount; ++i ){
 				for ( var j in scenes ){
-					if ( scenes.hasOwnProperty(i) ){
-						scenes[j].GetScene().removeChild(Applications[i].GetSceneObject(j));
-						scenes[j].GetScene().removeChild(Applications[i].GetWindowObject());
+					if ( scenes.hasOwnProperty(j) ){
+						scenes[j].GetScene().removeChild(Applications[0].GetSceneObject(j));
+						scenes[j].GetScene().removeChild(Applications[0].GetWindowObject());
 					}
 				}
 				
@@ -1931,9 +1931,9 @@ SOFTWARE.
                         var scenes = Lively3D.GetScenes();
                         for (var i = 0; i < appcount; ++i ){
                                 for ( var j in scenes ){
-                                        if ( scenes.hasOwnProperty(i) ){
-                                                scenes[j].GetScene().removeChild(Applications[i].GetSceneObject(j));
-                                                scenes[j].GetScene().removeChild(Applications[i].GetWindowObject());
+                                        if ( scenes.hasOwnProperty(j) ){
+                                                scenes[j].GetScene().removeChild(Applications[0].GetSceneObject(j));
+                                                scenes[j].GetScene().removeChild(Applications[0].GetWindowObject());
                                         }
                                 }
 
