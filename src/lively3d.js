@@ -828,6 +828,14 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
+
+	/**
+		Gets currently loaded scenes.
+		@return Array of scenes.
+	*/
+	Lively3D.GetScenes = function(){
+		return Scenes;
+	}
 	
 	/**
 		Switches to the next scene. If current scene is the last scene, switches to the first scene.

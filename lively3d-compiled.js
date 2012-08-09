@@ -828,6 +828,14 @@ var Lively3D = (function(Lively3D){
 	Lively3D.GetMouse = function(){
 		return mouse;
 	}
+
+	/**
+		Gets currently loaded scenes.
+		@return Array of scenes.
+	*/
+	Lively3D.GetScenes = function(){
+		return Scenes;
+	}
 	
 	/**
 		Switches to the next scene. If current scene is the last scene, switches to the first scene.
@@ -1725,7 +1733,21 @@ SOFTWARE.
 			@param {string} filename Name of the statefile.
 		*/
 		LoadDesktop: function(filename){
+			var Applications = Lively3D.GetApplications();
+			var appcount = Applications.length;
 			
+			var scenes = Lively3D.GetScenes();
+			for (var i = 0; i < appcount; ++i ){
+				for ( var j in scenes ){
+					if ( scenes.hasOwnProperty(i) ){
+						scenes[j].GetScene().removeChild(Applications[i].GetSceneObject(j));
+						scenes[j].GetScene().removeChild(Applications[i].GetWindowObject());
+					}
+				}
+				
+				
+				Applications.splice(0, 1);
+			}
 			Lively3D.FileOperations.getJSON(filename, ParseDesktopJSON, "states/" + Lively3D.GetUsername() + '/');
 		},
 		
@@ -1904,17 +1926,20 @@ SOFTWARE.
 		*/
 		LoadDesktop: function(name){
 			var Applications = Lively3D.GetApplications();
-			
-			var appcount = Applications.length;
-			for (var i = 0; i < appcount; ++i ){
-				for ( var i in Lively3D.GLGE.scenes ){
-					if ( Lively3D.GLGE.scenes.hasOwnProperty(i) ){
-						Lively3D.GLGE.scenes[i].scene.removeChild(Applications[i].current);
-					}
-				}
-				
-				Applications.splice(0, 1);
-			}
+                        var appcount = Applications.length;
+
+                        var scenes = Lively3D.GetScenes();
+                        for (var i = 0; i < appcount; ++i ){
+                                for ( var j in scenes ){
+                                        if ( scenes.hasOwnProperty(i) ){
+                                                scenes[j].GetScene().removeChild(Applications[i].GetSceneObject(j));
+                                                scenes[j].GetScene().removeChild(Applications[i].GetWindowObject());
+                                        }
+                                }
+
+
+                                Applications.splice(0, 1);
+                        }
 			
 			$.get("/lively3d/node/states/" + Lively3D.GetUsername() + '/' + name, function (data){
 				var apps = data.applications;
